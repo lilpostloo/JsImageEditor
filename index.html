@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+
+	<meta content='text/html;charset=utf-8' http-equiv='Content-Type'/>
+	<title>Image Editor</title>
+
+
+	<!-- Libraries -->
+	<script src='js/libs/jquery-1.10.2.min.js'></script>
+	<script src='js/libs/jquery-ui-1.10.3.js'></script>
+	<script src='js/libs/spectrum.js'></script>
+	<script src='js/libs/clipboard.js'></script>
+	
+	<!-- Universal modules -->	
+	<script src='js/ActionHistory.js'></script>
+	<script src='js/Boundary.js'></script>
+	<script src='js/CanvasManager.js'></script>
+	<script src='js/FileDropper.js'></script>
+	<script src='js/KeyPressManager.js'></script>
+	<script src='js/LayerManager.js'></script>		
+	<script src='js/PasteManager.js'></script>
+	<script src='js/UiManager.js'></script>
+	<script src='js/UndoRedo.js'></script>
+
+
+	<!-- Modular tools -->
+	<script src='js/tools/Arrow.js'></script>			
+	<script src='js/tools/BackgroundColor.js'></script>		
+	<script src='js/tools/Bin.js'></script>		
+	<script src='js/tools/Blur.js'></script>		
+	<script src='js/tools/ColorPicker.js'></script>		
+	<script src='js/tools/Crop.js'></script>		
+	<script src='js/tools/Drag.js'></script>		
+	<script src='js/tools/FreeTransform.js'></script>		
+	<script src='js/tools/Pencil.js'></script>		
+	<script src='js/tools/Save.js'></script>		
+	<script src='js/tools/Text.js'></script>		
+	<script src='js/tools/Upload.js'></script>
+	<script src='js/tools/Zoom.js'></script>		
+
+	<!-- Main initial routine -->
+	<script src='js/Main.js'></script>
+
+	<!--live reload dev tool-->
+	<script src="http://localhost:35729/livereload.js"></script>
+
+		
+	<link href='css/jquery-ui-1.10.3.css' rel='stylesheet'/>	
+	<link href='css/spectrum.css' rel='stylesheet'/>
+
+
+</head>
+<body>
+<style>
+body{
+	background-color:#315177;
+	margin: 0;
+	padding: 0;
+
+}
+body, html {
+    
+}
+
+#layerBar { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+
+.handle  { cursor: move; 
+	padding: 13px;
+}
+
+.toolbar{
+	background:#19294a;
+	position: fixed;
+	z-index: 9999999;
+}
+.icon{
+	padding: 5px;
+	height: 28px;
+	width: 28px;
+	margin: 4px;
+}
+
+.icon.mouseover, .icon.active{
+	background: #315177;
+}
+.divider{
+	padding: 8px;
+}
+.thumb{
+	margin: 7px;
+	height: 35px;
+	width: 35px;	
+}
+.layer{
+	position: fixed;
+}
+.layer.active{
+	border:1px dashed #ccc;
+	margin: -1px;
+	margin-left: -1px;
+}
+.thumb.active{
+	border:1px solid #ccc;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+
+}
+.undoCounter{
+	position: absolute;
+	top:37px;
+	left:216px;
+	color: #A5C0E1;
+	font-size: 10px
+}
+.redoCounter{
+	position: absolute;
+	top:37px;
+	left:274px;
+	color: #A5C0E1;
+	font-size: 10px
+
+}
+.boundary{
+	position: fixed;
+	z-index: -9999;
+	border: 1px dashed #A5C0E1;
+}
+.dimensionW, .dimensionH{
+	position: fixed;
+	z-index: -9999;
+	color:#A5C0E1;
+	font-size:12px;
+	margin:2px;
+}
+
+.ui-state-disabled{
+	opacity: 1;
+}
+.sizer.active{
+	background: #315177;	
+}
+</style>
+
+
+
+
+
+
+
+
+</body>
+</html>

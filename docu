@@ -1,0 +1,83 @@
+----------------
+What is it
+----------------
+A browser based image editor. For quickly handling basic image editing operations, where loading a full desktop image editor may take too long. 
+
+
+Basic needs of a non-professional image editor:
+Crop
+Pencil
+Arrows
+Blur/Pixelate
+Circle
+Upload
+
+---------------
+Architecture
+----------------
+Moores law tells us browser capabilities will only continue to grow, opening up more and more image processing capabilities. With this in mind, extensibility and open sourcing were 2 main considerations at inception.
+
+
+
+----------------
+How it works
+----------------
+
+The entire app is built using js prototype based modular architecture. Index html file loads all js modules and then main.js which initializes and builds the UI toolbars. When the dom is ready, they are attached to the body element. And subsequently domReady methods within tool module files are called if they're defined. 
+
+Index
+	load js files
+	initialize build UI
+	attach when dom ready 
+	call domReady fn's in tooling
+
+
+---------------
+Files
+----------------
+The core files of the app are:
+
+Index.html - loads all files, bare minimum html skeleton
+Main.js - final js file to load, fires UI build and domReady
+UIManager.js - builds ui and toolbars. The place to add new tools
+
+
+
+-------------
+Core elements
+-------------
+Are js files found in /js directory. Are also tool modules. They handle global functions such drag and drop, pasting, undo redo, layer management. 
+
+
+
+
+
+---------------------
+Tool Module
+---------------------
+Found in /js/tools directory. They have the following code structure:
+
+
+
+var ModuleName = function(){
+	this.title = 'Module Name';
+	this.iconUrl = 'icon.png'; 
+	this.cursor = 'cursor-url.png'; //optional, default if not defined
+	this.noSetActive = 0;  bool, optional, when tool/icon doesnt need active state on press
+}
+
+//called on toolbar icon build before dom ready
+ModuleName.prototype.init = function(){} 
+
+
+//called on dom ready
+ModuleName.prototype.domReady = function(){} 
+
+
+//called when tool icon clicked
+ModuleName.prototype.start = function(){} 
+
+//called when another tool clicked
+ModuleName.prototype.stop = function(){} 
+
+var moduleName = new ModuleName();
